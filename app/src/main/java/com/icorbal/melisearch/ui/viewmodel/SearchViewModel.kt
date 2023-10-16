@@ -9,8 +9,8 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel : ViewModel() {
 
-    private val searchModel = MutableLiveData<SearchModel>()
-    val isLoading = MutableLiveData<Boolean>()
+    val searchModel = MutableLiveData<SearchModel>()
+    private val isLoading = MutableLiveData<Boolean>()
 
     var searchForWordsUseCase = SearchForWordsUseCase()
 
