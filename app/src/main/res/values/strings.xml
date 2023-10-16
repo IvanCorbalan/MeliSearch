@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MeliSearch</string>
+    <string name="search">buscar</string>
 </resources>

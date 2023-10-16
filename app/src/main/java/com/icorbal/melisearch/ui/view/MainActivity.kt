@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,15 +25,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        searchViewModel.onCreate("Motorola%20G6")
-
         initRecyclerView()
+
+        binding.search.doOnTextChanged { text, start, before, count ->
+            searchViewModel.onCreate(text.toString())
+        }
 
         searchViewModel.searchModel.observe(this, Observer {
             binding.searchResults.adapter = SearchResultAdapter(it.results) { searchResult ->
                 onItemSelected(searchResult)
             }
         })
+        searchViewModel.isLoading.observe(this, Observer { isLoading ->
+            binding.progressBar.isVisible = isLoading
+            binding.searchResults.isVisible = !isLoading
+        })
+
 
     }
 
