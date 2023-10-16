@@ -1,5 +1,7 @@
 package com.icorbal.melisearch.core
 
+import android.os.Build
+import com.icorbal.melisearch.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,7 +17,7 @@ object RetrofitHelper {
         val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
         return Retrofit.Builder()
-            .baseUrl("https://api.mercadolibre.com/")
+            .baseUrl(BuildConfig.HOST)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
