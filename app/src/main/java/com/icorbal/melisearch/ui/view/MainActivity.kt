@@ -17,7 +17,9 @@ import com.icorbal.melisearch.data.model.Result
 import com.icorbal.melisearch.databinding.ActivityMainBinding
 import com.icorbal.melisearch.ui.view.adapter.SearchResultAdapter
 import com.icorbal.melisearch.ui.viewmodel.SearchViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

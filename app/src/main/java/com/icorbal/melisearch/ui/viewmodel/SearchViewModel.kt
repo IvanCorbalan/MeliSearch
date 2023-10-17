@@ -5,16 +5,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.icorbal.melisearch.data.model.SearchModel
 import com.icorbal.melisearch.domain.SearchForWordsUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SearchViewModel : ViewModel() {
+@HiltViewModel
+class SearchViewModel @Inject constructor(
+    private val searchForWordsUseCase : SearchForWordsUseCase
+) : ViewModel() {
 
     val searchModel = MutableLiveData<SearchModel>()
     val isLoading = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()
-
-    var searchForWordsUseCase = SearchForWordsUseCase()
 
     fun search(query: String) {
         viewModelScope.launch {
