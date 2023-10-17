@@ -9,7 +9,6 @@ class SearchService @Inject constructor(
     private val api: SearchApiClient
 ) {
 
-
     suspend fun search(query: String): SearchModel? {
         return withContext(Dispatchers.IO) {
             val response = api.search(query)
