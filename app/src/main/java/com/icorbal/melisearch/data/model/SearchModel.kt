@@ -1,5 +1,7 @@
 package com.icorbal.melisearch.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class SearchModel(
     val siteId: String = "",
     val query: String = "",
@@ -10,6 +12,7 @@ data class Result(
     val id: String,
     val title: String,
     val price: String,
-    val currencyId: String,
-    val thumbnail: String
+    @SerializedName("currency_id")val currencyId: String,
+    val thumbnail: String,
+    val permalink: String
 )

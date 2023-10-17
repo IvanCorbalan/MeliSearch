@@ -10,10 +10,19 @@ import com.icorbal.melisearch.databinding.ItemSearchResultBinding
 
 class SearchResultViewHolder(view: View) : ViewHolder(view) {
 
-    val binding = ItemSearchResultBinding.bind(view)
+    companion object {
+        val currencySymbolMap = mapOf<String, String>(
+            "ARS" to "$"
+        )
+    }
+
+
+    private val binding = ItemSearchResultBinding.bind(view)
 
     fun bind(result: Result, onClickListener: (Result) -> Unit) {
+        val currency = currencySymbolMap[result.currencyId]
         binding.title.text = result.title
+        binding.price.text = "$currency${result.price}"
 
         val image = binding.image
         Glide.with(image.context).load(result.thumbnail).into(image)
@@ -22,4 +31,5 @@ class SearchResultViewHolder(view: View) : ViewHolder(view) {
             onClickListener(result)
         }
     }
+
 }

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_edit_text">5dp</dimen>
+    <dimen name="image_size_dimen">100dp</dimen>
+    <dimen name="item_search_result_margin">10dp</dimen>
 </resources>

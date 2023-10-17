@@ -2,7 +2,6 @@ package com.icorbal.melisearch.ui.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onItemSelected(result: Result) {
-        Toast.makeText(this, result.title, Toast.LENGTH_SHORT).show()
+        startActivity(WebViewActivity.getIntent(this, result.permalink))
     }
 
     private fun search() {
